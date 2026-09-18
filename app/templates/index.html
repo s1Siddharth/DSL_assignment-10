@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OmniShield AI — Real-Time ML-Powered Network Intrusion & Threat Protection Platform." />
+  <meta name="theme-color" content="#050914" />
+  <title>OmniShield AI — Autonomous Threat Protection Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <style>
+    :root {
+      --bg-base: #050914;
+      --bg-surface: #0a1020;
+      --bg-elevated: #10182b;
+      --bg-card: rgba(16, 24, 43, 0.85);
+      --accent-cyan: #00f0ff;
+      --accent-purple: #8b5cf6;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-subtle: rgba(0, 240, 255, 0.12);
+      --border-accent: rgba(0, 240, 255, 0.35);
+    }
+
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .sidebar-logo-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+    .sidebar-logo-text em {
+      color: var(--accent-cyan);
+      font-style: normal;
+    }
+    .sidebar-logo-sub {
+      font-size: 10px;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    .brand-svg {
+      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.45));
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- App Layout -->
+<div class="app-layout">
+
+  <!-- ── Sidebar Navigation ──────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo" style="cursor: pointer;" onclick="window.location.href='/'">
+      <div class="sidebar-logo-icon" style="background:none; box-shadow:none; padding:0;">
+        <svg class="brand-svg" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2L4 8v10c0 7.8 5.16 15.05 13 17 7.84-1.95 13-9.2 13-17V8L17 2z" stroke="#00f0ff" stroke-width="2" fill="rgba(0,240,255,0.1)"/>
+          <path d="M12 17c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="17" cy="17" r="3" fill="#00f0ff"/>
+        </svg>
+      </div>
+      <div>
+        <div class="sidebar-logo-text">OMNI<em>SHIELD</em> AI</div>
+        <div class="sidebar-logo-sub">Detect. Analyze. Protect.</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item active" data-page="dashboard" id="nav-dashboard">
+        <span class="nav-item-icon">📊</span>
+        Dashboard
+      </div>
+
+      <div class="nav-section-label">Threat Detection</div>
+      <div class="nav-item" data-page="analyze" id="nav-analyze">
+        <span class="nav-item-icon">🔍</span>
+        Analyze Activity
+      </div>
+      <div class="nav-item" data-page="history" id="nav-history">
+        <span class="nav-item-icon">📋</span>
+        Activity History
+      </div>
+      <div class="nav-item" data-page="alerts" id="nav-alerts">
+        <span class="nav-item-icon">🚨</span>
+        Alerts
+        <span class="nav-badge hidden" id="alert-count-badge">0</span>
+      </div>
+
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" data-page="analytics" id="nav-analytics">
+        <span class="nav-item-icon">📈</span>
+        Analytics
+      </div>
+      <div class="nav-item" data-page="reports" id="nav-reports">
+        <span class="nav-item-icon">📄</span>
+        Reports
+      </div>
+
+      <div class="nav-section-label">Machine Learning</div>
+      <div class="nav-item" data-page="datasets" id="nav-datasets">
+        <span class="nav-item-icon">🗄️</span>
+        Datasets
+      </div>
+      <div class="nav-item" data-page="models" id="nav-models">
+        <span class="nav-item-icon">🤖</span>
+        ML Models
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="model-status-pill">
+        <div class="model-status-dot" id="modelStatusDot"></div>
+        <div class="model-status-text">
+          <strong id="modelStatusText">No model loaded</strong>
+          <span id="modelVersionText">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main Content Area ───────────────────────────────────── -->
+  <div class="main-content">
+
+    <!-- Header -->
+    <header class="app-header">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle sidebar">☰</button>
+      <div>
+        <div class="page-title" id="pageTitle">Dashboard</div>
+      </div>
+      <div class="header-actions">
+        <div class="live-clock-chip" id="liveClock" title="Current time"></div>
+        <div class="alert-indicator" id="headerAlertBtn" title="Alerts">
+          🔔
+          <div class="alert-dot" id="headerAlertDot"></div>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="OmniShield.navigate('analyze')">
+          ⚡ Inspect Packet
+        </button>
+      </div>
+    </header>
+
+    <!-- Page Content (Rendered dynamically by JS SPA router) -->
+    <main class="page-content" id="pageContent">
+      <!-- Loaded dynamically -->
+    </main>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Modal container -->
+<div id="modal-container"></div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script>
+  // Register datalabels plugin globally
+  Chart.register(ChartDataLabels);
+</script>
+
+<!-- App scripts -->
+<script src="/static/js/app.js"></script>
+<script src="/static/js/pages/dashboard.js"></script>
+<script src="/static/js/pages/analyze.js"></script>
+<script src="/static/js/pages/history.js"></script>
+<script src="/static/js/pages/alerts.js"></script>
+<script src="/static/js/pages/analytics.js"></script>
+<script src="/static/js/pages/datasets.js"></script>
+<script src="/static/js/pages/models.js"></script>
+<script src="/static/js/pages/reports.js"></script>
+
+</body>
+</html>

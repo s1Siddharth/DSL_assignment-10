@@ -1,0 +1,58 @@
+# ── Python ───────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.pyo
+.Python
+
+# ── Virtual environments ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Build / Distribution ──────────────────────────────────────────────────
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Testing ───────────────────────────────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+scratch/
+
+# ── Database (local data — do not commit) ────────────────────────────────
+instance/
+instance/netguard.db
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Secrets / Environment ────────────────────────────────────────────────
+.env
+*.log
+
+# ── Uploaded datasets (could be large / private) ─────────────────────────
+uploads/
+uploads/**
+
+# ── Trained ML models (too large for GitHub) ─────────────────────────────
+models/trained/
+models/metadata/
+
+# ── OS / Editor ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Data folder (sample CSVs are kept, raw user data excluded) ────────────
+data/**/*.csv
+data/**/*.xlsx
+data/**/*.json
