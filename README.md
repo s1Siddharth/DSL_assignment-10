@@ -27,6 +27,12 @@
 5. **Get Alerts** with severity levels (CRITICAL / HIGH / MEDIUM / LOW)
 6. **Visualize** attack trends, confusion matrices, feature importance & more
 
+### Dashboard
+![Dashboard](assets/dashboard.png)
+
+### Datasets & ML Training
+![Datasets](assets/datasets.png)
+
 ---
 
 ## 👥 Team
