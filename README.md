@@ -27,12 +27,6 @@
 5. **Get Alerts** with severity levels (CRITICAL / HIGH / MEDIUM / LOW)
 6. **Visualize** attack trends, confusion matrices, feature importance & more
 
-### Dashboard
-![Dashboard](assets/dashboard.png)
-
-### Datasets & ML Training
-![Datasets](assets/datasets.png)
-
 ---
 
 ## 👥 Team
@@ -44,6 +38,14 @@
 | **Siddharth Jadhav** | 17 | Backend API, ML Pipeline, Database Design |
 | **Krish Chorghe** | 09 | Frontend UI, Charts, SPA Router |
 | **Soham Chindarkar** | 08 | Data Preprocessing, Testing, Documentation |
+
+---
+
+### Dashboard
+![Dashboard](assets/dashboard.png)
+
+### Datasets & ML Training
+![Datasets](assets/datasets.png)
 
 ---
 
