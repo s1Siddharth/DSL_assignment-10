@@ -186,5 +186,5 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ---
 
 <div align="center">
-Made with ❤️ for DSL Mini-Project · OmniShield AI Team · 2026
+Made with ❤️❤️ for DSL Mini-Project · OmniShield AI Team · 2026
 </div>
